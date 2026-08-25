@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Итоговое задание · Число, слово, код{% endblock %}
+
+{% block content %}
+  <section class="integration" id="integration">
+    <div class="eyebrow">Итоговое задание</div>
+    <h1>Сервер, который считает</h1>
+    <p class="prose" style="color:var(--ink-soft)">Небольшой кейс, где нужны все три модуля сразу: описать ситуацию по-английски, посчитать изменение вручную и подтвердить расчёт программой.</p>
+
+    <div class="integration-grid">
+      <div class="integration-card eng">
+        <span class="ic-label">English</span>
+        <p>Опишите серверную комнату 4–5 предложениями, используя <em>there is / there are</em> и <em>this / that</em>: сколько в ней серверов, есть ли свободные порты, что находится рядом, а что — в дальнем углу.</p>
+      </div>
+      <div class="integration-card math">
+        <span class="ic-label">Математика</span>
+        <p>Загрузка сервера была −2.5% от нормы (простой). За час она изменилась на +7.8%, затем ещё на −1.3%. Посчитайте итоговое отклонение от нормы вручную, по правилам Модуля 1.</p>
+      </div>
+      <div class="integration-card info">
+        <span class="ic-label">Python</span>
+        <p>Возьмите <code>compare_numbers_v2.py</code> из Модуля 4 и передайте в неё как <code>a</code> — ваш результат, а как <code>b</code> — 0 (норма). Убедитесь, что вывод функции совпадает с вашим текстовым описанием на английском: сервер загружен выше или ниже нормы.</p>
+      </div>
+    </div>
+  </section>
+{% endblock %}

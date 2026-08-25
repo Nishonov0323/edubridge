@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ module.title }} · Число, слово, код{% endblock %}
+
+{% block content %}
+  <section class="module module--eng" id="module-2">
+    <div class="module-tag">{{ module.tag }}</div>
+    <div class="module-head">
+      <span class="mnum">02</span>
+      <h1>{{ module.title }}</h1>
+    </div>
+    <p class="module-intro">{{ module.intro }}</p>
+
+    <div class="sub">
+      <div class="sub-label">Теория</div>
+
+      <h3>There is / There are</h3>
+      <p class="prose">Конструкция сообщает о наличии предмета или предметов. <strong>There is</strong> — с исчисляемым существительным в единственном числе и с неисчисляемыми; <strong>there are</strong> — с исчисляемыми во множественном числе.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Форма</th><th>Единственное число</th><th>Множественное число</th><th>Неисчисляемое</th></tr></thead>
+          <tbody>
+            <tr><td>Утверждение</td><td class="mono">There is a server in the room.</td><td class="mono">There are five computers here.</td><td class="mono">There is some information on the disk.</td></tr>
+            <tr><td>Отрицание</td><td class="mono">There isn't a printer here.</td><td class="mono">There aren't any cables on the desk.</td><td class="mono">There isn't much space on the drive.</td></tr>
+            <tr><td>Вопрос</td><td class="mono">Is there a monitor on the table?</td><td class="mono">Are there any files in the folder?</td><td class="mono">Is there any Wi-Fi here?</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Краткие ответы: <em>Yes, there is. / No, there isn't. — Yes, there are. / No, there aren't.</em> В утверждениях чаще используется <strong>some</strong>, в отрицаниях и вопросах — <strong>any</strong>.</p>
+
+      <h3>This / These / That / Those</h3>
+      <p class="prose">Указательные местоимения различаются по двум признакам: <strong>число</strong> (единственное/множественное) и <strong>дистанция</strong> (рядом/далеко).</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>Рядом (here)</th><th>Далеко (there)</th></tr></thead>
+          <tbody>
+            <tr><td>Единственное число</td><td class="mono">this — This is a laptop.</td><td class="mono">that — That is a data center.</td></tr>
+            <tr><td>Множественное число</td><td class="mono">these — These are keyboards.</td><td class="mono">those — Those are old servers.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Разбор примеров</div>
+      <div class="example">
+        <div class="ex-title"><span class="tag">01</span>a folder / desktop</div>
+        <div class="ex-answer">There is a folder on the desktop.</div>
+      </div>
+      <div class="example">
+        <div class="ex-title"><span class="tag">02</span>no printers / office (отрицание)</div>
+        <div class="ex-answer">There aren't any printers in the office.</div>
+      </div>
+      <div class="example">
+        <div class="ex-title"><span class="tag">03</span>five monitors / server room</div>
+        <div class="ex-answer">There are five monitors in the server room.</div>
+      </div>
+      <div class="example">
+        <div class="ex-title"><span class="tag">04</span>this laptop (рядом) / that server (далеко)</div>
+        <div class="ex-answer">This laptop is fine, but that server needs an update.</div>
+      </div>
+      <div class="example">
+        <div class="ex-title"><span class="tag">05</span>any Wi-Fi / here? (вопрос)</div>
+        <div class="ex-answer">Is there any Wi-Fi here?</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Задания для самостоятельной работы</div>
+      {% include "handbook/_exercises.html" %}
+    </div>
+  </section>
+{% endblock %}

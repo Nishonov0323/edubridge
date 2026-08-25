@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}{{ module.title }} · Число, слово, код{% endblock %}
+
+{% block content %}
+  <section class="module module--opt" id="module-4">
+    <div class="module-tag">{{ module.tag }}</div>
+    <div class="module-head">
+      <span class="mnum">04</span>
+      <h1>Оптимизация алгоритма и <code>antigravity</code></h1>
+    </div>
+    <p class="module-intro">{{ module.intro }}</p>
+
+    <div class="sub">
+      <div class="sub-label">Теория</div>
+
+      <h3>Чистый код и рефакторинг</h3>
+      <p class="prose"><strong>Чистый код</strong> — это код, который легко читать и менять: понятные имена, короткие функции, каждая из которых отвечает за одно действие. <strong>Рефакторинг</strong> — это изменение внутреннего устройства кода без изменения его поведения снаружи: программа продолжает делать то же самое, но становится проще и надёжнее.</p>
+
+      <h3>The Zen of Python</h3>
+      <p class="prose">Философию языка можно увидеть прямо в интерпретаторе — команда <code>import this</code> печатает 19 принципов PEP 20. Несколько из них особенно важны для этого модуля:</p>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td class="mono">Beautiful is better than ugly.</td><td>Красивое лучше уродливого.</td></tr>
+            <tr><td class="mono">Explicit is better than implicit.</td><td>Явное лучше неявного.</td></tr>
+            <tr><td class="mono">Simple is better than complex.</td><td>Простое лучше сложного.</td></tr>
+            <tr><td class="mono">Errors should never pass silently.</td><td>Ошибки не должны замалчиваться.</td></tr>
+            <tr><td class="mono">Readability counts.</td><td>Читаемость имеет значение.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">Пасхалка</span>
+        Команда <code>import antigravity</code> открывает в браузере комикс xkcd №353 про Python — встроенная в язык шутка, которая напоминает: у самой строгой дисциплины может быть чувство юмора.
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Разбор примеров</div>
+      <h3>Было → стало: доработка compare_numbers.py</h3>
+
+      <div class="compare-grid">
+        <div class="compare-col before">
+          <div class="compare-label">До оптимизации</div>
+          <div class="code-panel" style="margin:0; border:none; border-radius:0;">
+            <pre style="padding:14px 16px; font-size:.78rem;"><code>a = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"a: "</span>))
+b = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"b: "</span>))
+<span class="c-com"># упадёт при b = 0</span>
+<span class="c-com"># или нечисловом вводе</span>
+ratio = a / b</code></pre>
+          </div>
+        </div>
+        <div class="compare-col after">
+          <div class="compare-label">После оптимизации</div>
+          <div class="code-panel" style="margin:0; border:none; border-radius:0;">
+            <pre style="padding:14px 16px; font-size:.78rem;"><code>a = read_rational(<span class="c-str">"a: "</span>)
+b = read_rational(<span class="c-str">"b: "</span>)
+<span class="c-com"># повторный запрос при</span>
+<span class="c-com"># ошибке ввода</span>
+ratio = safe_ratio(a, b)</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-panel">
+        <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">compare_numbers_v2.py</span></div>
+        <pre><code><span class="c-kw">def</span> read_rational(prompt: <span class="c-kw">str</span>) -&gt; <span class="c-kw">float</span>:
+    <span class="c-str">"""Запрашивает число у пользователя, пока ввод не станет корректным."""</span>
+    <span class="c-kw">while</span> <span class="c-kw">True</span>:
+        raw_value = <span class="c-kw">input</span>(prompt).strip().replace(<span class="c-str">","</span>, <span class="c-str">"."</span>)
+        <span class="c-kw">try</span>:
+            <span class="c-kw">return</span> <span class="c-kw">float</span>(raw_value)
+        <span class="c-kw">except</span> ValueError:
+            <span class="c-kw">print</span>(<span class="c-str">"Ошибка: введите число, например 3.5 или -2"</span>)
+
+
+<span class="c-kw">def</span> compare_numbers(a: <span class="c-kw">float</span>, b: <span class="c-kw">float</span>) -&gt; <span class="c-kw">str</span>:
+    <span class="c-str">"""Возвращает словесный результат сравнения a и b."""</span>
+    <span class="c-kw">if</span> a == b:
+        <span class="c-kw">return</span> <span class="c-str">"a равно b"</span>
+    <span class="c-kw">return</span> <span class="c-str">"a больше b"</span> <span class="c-kw">if</span> a &gt; b <span class="c-kw">else</span> <span class="c-str">"a меньше b"</span>
+
+
+<span class="c-kw">def</span> safe_ratio(a: <span class="c-kw">float</span>, b: <span class="c-kw">float</span>) -&gt; <span class="c-kw">str</span>:
+    <span class="c-str">"""Вычисляет a / b, безопасно обрабатывая деление на ноль."""</span>
+    <span class="c-kw">if</span> b == <span class="c-acc">0</span>:
+        <span class="c-kw">return</span> <span class="c-str">"не определено (деление на ноль)"</span>
+    <span class="c-kw">return</span> <span class="c-str">f"{a / b:.4f}"</span>
+
+
+<span class="c-kw">def</span> main() -&gt; <span class="c-kw">None</span>:
+    a = read_rational(<span class="c-str">"Введите число a: "</span>)
+    b = read_rational(<span class="c-str">"Введите число b: "</span>)
+
+    <span class="c-kw">print</span>(<span class="c-str">f"Результат сравнения: {compare_numbers(a, b)}"</span>)
+    <span class="c-kw">print</span>(<span class="c-str">f"Разность a - b = {a - b:.4f}"</span>)
+    <span class="c-kw">print</span>(<span class="c-str">f"Отношение a / b = {safe_ratio(a, b)}"</span>)
+
+
+<span class="c-kw">if</span> __name__ == <span class="c-str">"__main__"</span>:
+    main()</code></pre>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Что улучшено</th><th>До</th><th>После</th></tr></thead>
+          <tbody>
+            <tr><td>Ошибочный ввод</td><td>программа падает с <code>ValueError</code></td><td>цикл в <code>read_rational</code> просит ввести число повторно</td></tr>
+            <tr><td>Деление на ноль</td><td>необработанный <code>ZeroDivisionError</code></td><td><code>safe_ratio</code> возвращает понятное сообщение</td></tr>
+            <tr><td>Структура</td><td>вся логика в одном блоке скрипта</td><td>4 небольшие функции, каждая с докстрингом</td></tr>
+            <tr><td>Ветвление сравнения</td><td>3 ветки <code>if / elif / else</code></td><td>1 проверка на равенство + тернарное выражение</td></tr>
+            <tr><td>Вывод чисел</td><td>произвольное число знаков после запятой</td><td>единый формат <code>:.4f</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Задания для самостоятельной работы</div>
+      {% include "handbook/_exercises.html" %}
+    </div>
+  </section>
+{% endblock %}

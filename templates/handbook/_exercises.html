@@ -1,0 +1,22 @@
+{% regroup exercises by group_label as grouped_exercises %}
+{% for group in grouped_exercises %}
+  {% if group.grouper %}<h3 class="exercise-group-label">{{ group.grouper }}</h3>{% endif %}
+  <ol class="exercise-list" {% if not forloop.first %}start="{{ group.list.0.order }}"{% endif %}>
+    {% for exercise in group.list %}
+      <li><span class="n">{{ exercise.order }}</span> {{ exercise.prompt }}</li>
+    {% endfor %}
+  </ol>
+{% endfor %}
+
+{% if has_answers %}
+  <details class="answers">
+    <summary>Показать ответы</summary>
+    <div class="answers-body">
+      <ol>
+        {% for exercise in exercises %}
+          {% if exercise.answer %}<li>{{ exercise.order }}) {{ exercise.answer }}</li>{% endif %}
+        {% endfor %}
+      </ol>
+    </div>
+  </details>
+{% endif %}

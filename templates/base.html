@@ -1,0 +1,36 @@
+{% load static %}<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Число, слово, код{% endblock %}</title>
+  <meta name="description" content="Межпредметное учебно-методическое пособие: рациональные числа, английская грамматика для IT и алгоритмы на Python.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="{% static 'handbook/css/style.css' %}">
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="{% url 'handbook:home' %}">Число, слово, код</a>
+      <nav class="chipnav" aria-label="Модули пособия">
+        <a href="{% url 'handbook:module_detail' 1 %}" data-accent="math" {% if module.number == 1 %}class="is-active"{% endif %}>01 · Математика</a>
+        <a href="{% url 'handbook:module_detail' 2 %}" data-accent="eng" {% if module.number == 2 %}class="is-active"{% endif %}>02 · English</a>
+        <a href="{% url 'handbook:module_detail' 3 %}" data-accent="info" {% if module.number == 3 %}class="is-active"{% endif %}>03 · Информатика</a>
+        <a href="{% url 'handbook:module_detail' 4 %}" data-accent="opt" {% if module.number == 4 %}class="is-active"{% endif %}>04 · Оптимизация</a>
+        <a href="{% url 'handbook:integration' %}">Итог</a>
+      </nav>
+    </div>
+  </div>
+
+  {% block content %}{% endblock %}
+
+  <div class="colophon">
+    <span>Учебно-методическое пособие «Число, слово, код»</span>
+    <span>4 модуля · теория + разбор примеров + задания с ключом ответов · код по PEP 8</span>
+  </div>
+
+</div>
+</body>
+</html>

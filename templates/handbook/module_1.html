@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}{{ module.title }} · Число, слово, код{% endblock %}
+
+{% block content %}
+  <section class="module module--math" id="module-1">
+    <div class="module-tag">{{ module.tag }}</div>
+    <div class="module-head">
+      <span class="mnum">01</span>
+      <h1>{{ module.title }}</h1>
+    </div>
+    <p class="module-intro">{{ module.intro }}</p>
+
+    <div class="sub">
+      <div class="sub-label">Теория</div>
+
+      <h3>Что такое рациональное число</h3>
+      <p class="prose">Рациональное число — это число, которое можно представить в виде дроби m⁄n, где m — целое число, а n — натуральное (n ≠ 0). Множество рациональных чисел обозначается <strong>Q</strong> и включает целые числа, обыкновенные и десятичные дроби — как положительные, так и отрицательные: −7, 0, 3⁄4, −2.5, 5 всё это рациональные числа.</p>
+
+      <h3>Координатная прямая и модуль</h3>
+      <p class="prose">Каждому рациональному числу соответствует единственная точка на координатной прямой: положительные числа откладываются вправо от нуля, отрицательные — влево. Чем правее точка, тем больше число, которое она изображает.</p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 620 120" role="img" aria-label="Координатная прямая с точкой −3 и отрезком, показывающим, что модуль −3 равен расстоянию 3 до нуля">
+          <line x1="40" y1="46" x2="565" y2="46" stroke="currentColor" stroke-width="2" marker-end="url(#arrowline)"></line>
+          <defs>
+            <marker id="arrowline" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+            </marker>
+          </defs>
+          <g stroke="currentColor" stroke-width="2">
+            <line x1="60" y1="40" x2="60" y2="52"></line>
+            <line x1="120" y1="40" x2="120" y2="52"></line>
+            <line x1="180" y1="40" x2="180" y2="52"></line>
+            <line x1="240" y1="40" x2="240" y2="52"></line>
+            <line x1="300" y1="34" x2="300" y2="58"></line>
+            <line x1="360" y1="40" x2="360" y2="52"></line>
+            <line x1="420" y1="40" x2="420" y2="52"></line>
+            <line x1="480" y1="40" x2="480" y2="52"></line>
+            <line x1="540" y1="40" x2="540" y2="52"></line>
+          </g>
+          <g fill="var(--ink-soft)" font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">
+            <text x="60" y="70">−4</text><text x="120" y="70">−3</text><text x="180" y="70">−2</text><text x="240" y="70">−1</text>
+            <text x="300" y="70" fill="var(--ink)">0</text>
+            <text x="360" y="70">1</text><text x="420" y="70">2</text><text x="480" y="70">3</text><text x="540" y="70">4</text>
+          </g>
+          <circle cx="120" cy="46" r="5" fill="currentColor"></circle>
+          <text x="120" y="20" fill="var(--ink)" font-family="IBM Plex Sans, sans-serif" font-size="13" text-anchor="middle" font-weight="600">A(−3)</text>
+          <g stroke="currentColor" stroke-width="1.6">
+            <line x1="120" y1="86" x2="300" y2="86"></line>
+            <line x1="120" y1="80" x2="120" y2="92"></line>
+            <line x1="300" y1="80" x2="300" y2="92"></line>
+          </g>
+          <text x="210" y="106" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">|−3| = 3</text>
+        </svg>
+        <figcaption>Модуль числа — это расстояние от его точки до нуля, поэтому он всегда неотрицателен.</figcaption>
+      </figure>
+
+      <p class="prose">Формально: |a| = a, если a ≥ 0, и |a| = −a, если a &lt; 0.</p>
+
+      <h3>Правила знаков</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Действие</th><th>Правило</th><th class="mono">Пример</th></tr></thead>
+          <tbody>
+            <tr><td>Сложение чисел с одинаковыми знаками</td><td>Сложить модули, сохранить общий знак</td><td class="mono">(−3) + (−5) = −8</td></tr>
+            <tr><td>Сложение чисел с разными знаками</td><td>Из большего модуля вычесть меньший, взять знак числа с большим модулем</td><td class="mono">(−7) + 4 = −3</td></tr>
+            <tr><td>Вычитание</td><td>Заменить вычитание сложением с противоположным числом: a − b = a + (−b)</td><td class="mono">2 − 9 = 2 + (−9) = −7</td></tr>
+            <tr><td>Умножение / деление, знаки одинаковы</td><td>Результат положительный</td><td class="mono">(−4) · (−2) = 8</td></tr>
+            <tr><td>Умножение / деление, знаки различны</td><td>Результат отрицательный</td><td class="mono">(−4) · 2 = −8</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Действия с дробями</h3>
+      <p class="prose">Обыкновенные дроби складывают и вычитают, предварительно приведя к общему знаменателю; умножают числитель на числитель и знаменатель на знаменатель; при делении дробь заменяют на обратную и умножают. Десятичная дробь переводится в обыкновенную по разрядам (0.25 = 25⁄100 = 1⁄4) и обратно — делением числителя на знаменатель.</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Разбор примеров</div>
+
+      <div class="example">
+        <div class="ex-title"><span class="tag">01</span>−3.5 + 2.25</div>
+        <ol>
+          <li>Знаки разные → из большего модуля вычитаем меньший: 3.5 − 2.25 = 1.25</li>
+          <li>Знак результата — как у числа с бо́льшим модулем (−3.5), то есть минус</li>
+        </ol>
+        <div class="ex-answer">Ответ: −1.25</div>
+      </div>
+
+      <div class="example">
+        <div class="ex-title"><span class="tag">02</span>(−2⁄3) − (−5⁄6)</div>
+        <ol>
+          <li>Заменяем вычитание сложением: −2⁄3 + 5⁄6</li>
+          <li>Приводим к общему знаменателю 6: −4⁄6 + 5⁄6</li>
+          <li>Складываем: 1⁄6</li>
+        </ol>
+        <div class="ex-answer">Ответ: 1⁄6</div>
+      </div>
+
+      <div class="example">
+        <div class="ex-title"><span class="tag">03</span>(2.5 − 4) : (−0.5) + (−1⁄4) · 8</div>
+        <ol>
+          <li>Скобка: 2.5 − 4 = −1.5</li>
+          <li>Деление: −1.5 : (−0.5) = 3 (знаки одинаковы → плюс)</li>
+          <li>Умножение: (−1⁄4) · 8 = −2</li>
+          <li>Складываем: 3 + (−2) = 1</li>
+        </ol>
+        <div class="ex-answer">Ответ: 1</div>
+      </div>
+
+      <div class="example">
+        <div class="ex-title"><span class="tag">04</span>Задача: баланс счёта</div>
+        <p class="ex-context">На счету было −850 у.е. (задолженность). Клиент внёс 1200 у.е., затем снял 430 у.е. Каков остаток?</p>
+        <ol>
+          <li>−850 + 1200 = 350</li>
+          <li>350 − 430 = −80</li>
+        </ol>
+        <div class="ex-answer">Ответ: −80 у.е. — на счету осталась задолженность 80 у.е.</div>
+      </div>
+
+      <div class="example">
+        <div class="ex-title"><span class="tag">05</span>Задача: температура</div>
+        <p class="ex-context">Утром термометр показывал −6 °C. К полудню температура поднялась на 9 °C, а к вечеру опустилась на 4 °C. Какой была температура вечером?</p>
+        <ol>
+          <li>−6 + 9 = 3</li>
+          <li>3 − 4 = −1</li>
+        </ol>
+        <div class="ex-answer">Ответ: −1 °C</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Задания для самостоятельной работы</div>
+      {% include "handbook/_exercises.html" %}
+    </div>
+  </section>
+{% endblock %}

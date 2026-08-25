@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}{{ module.title }} · Число, слово, код{% endblock %}
+
+{% block content %}
+  <section class="module module--info" id="module-3">
+    <div class="module-tag">{{ module.tag }}</div>
+    <div class="module-head">
+      <span class="mnum">03</span>
+      <h1>{{ module.title }}</h1>
+    </div>
+    <p class="module-intro">{{ module.intro }}</p>
+
+    <div class="sub">
+      <div class="sub-label">Теория</div>
+
+      <h3>Элементы блок-схемы</h3>
+      <p class="prose">Каждая фигура на блок-схеме имеет строго закреплённое значение:</p>
+
+      <div class="legend-row">
+        <div class="legend-item">
+          <svg viewBox="0 0 100 70" width="100" height="70" role="img" aria-label="Овал — начало или конец алгоритма">
+            <ellipse cx="50" cy="35" rx="42" ry="24" fill="none" stroke="currentColor" stroke-width="2"></ellipse>
+          </svg>
+          <span>Овал — начало / конец</span>
+        </div>
+        <div class="legend-item">
+          <svg viewBox="0 0 100 70" width="100" height="70" role="img" aria-label="Параллелограмм — ввод или вывод данных">
+            <polygon points="18,15 92,15 82,55 8,55" fill="none" stroke="currentColor" stroke-width="2"></polygon>
+          </svg>
+          <span>Параллелограмм — ввод / вывод</span>
+        </div>
+        <div class="legend-item">
+          <svg viewBox="0 0 100 70" width="100" height="70" role="img" aria-label="Прямоугольник — процесс или действие">
+            <rect x="12" y="15" width="76" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+          </svg>
+          <span>Прямоугольник — процесс / действие</span>
+        </div>
+        <div class="legend-item">
+          <svg viewBox="0 0 100 70" width="100" height="70" role="img" aria-label="Ромб — условие с ветвлением да или нет">
+            <polygon points="50,8 92,35 50,62 8,35" fill="none" stroke="currentColor" stroke-width="2"></polygon>
+          </svg>
+          <span>Ромб — условие (да / нет)</span>
+        </div>
+      </div>
+
+      <h3>Путь от задачи к коду</h3>
+      <ol>
+        <li>Сформулировать условие задачи словами.</li>
+        <li>Выделить исходные данные и ожидаемый результат.</li>
+        <li>Расписать шаги алгоритма словесно или псевдокодом.</li>
+        <li>Изобразить блок-схему, используя фигуры выше.</li>
+        <li>Перевести каждый блок в код на Python: параллелограмм → <code>input()</code>/<code>print()</code>, ромб → <code>if</code>, прямоугольник → присваивание или вычисление.</li>
+        <li>Протестировать программу на нескольких наборах данных, включая «пограничные» случаи.</li>
+      </ol>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Разбор примеров</div>
+
+      <h3>Задача: сравнение двух рациональных чисел</h3>
+      <p class="prose">Даны два числа a и b. Нужно определить, какое из них больше, и вывести результат сравнения.</p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 640 700" role="img" aria-label="Блок-схема сравнения двух чисел: ввод a и b, проверка a больше b, затем проверка a меньше b, три возможных вывода и общий конец">
+          <defs>
+            <marker id="arrow-info" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+            </marker>
+          </defs>
+          <g fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="260" cy="40" rx="90" ry="28"></ellipse>
+            <polygon points="170,96 360,96 350,150 160,150"></polygon>
+            <polygon points="260,178 360,230 260,282 160,230"></polygon>
+            <rect x="392" y="200" width="188" height="60" rx="4"></rect>
+            <polygon points="260,320 360,372 260,424 160,372"></polygon>
+            <rect x="392" y="342" width="188" height="60" rx="4"></rect>
+            <rect x="164" y="452" width="192" height="60" rx="4"></rect>
+            <ellipse cx="260" cy="650" rx="90" ry="28"></ellipse>
+          </g>
+          <g stroke="currentColor" stroke-width="2" fill="none" marker-end="url(#arrow-info)">
+            <line x1="260" y1="68" x2="260" y2="93"></line>
+            <line x1="260" y1="150" x2="260" y2="175"></line>
+            <line x1="360" y1="230" x2="389" y2="230"></line>
+            <line x1="260" y1="282" x2="260" y2="317"></line>
+            <line x1="360" y1="372" x2="389" y2="372"></line>
+            <line x1="260" y1="424" x2="260" y2="449"></line>
+            <path d="M486,260 L486,650 L353,650"></path>
+            <path d="M486,402 L486,650 L353,650"></path>
+            <line x1="260" y1="512" x2="260" y2="619"></line>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--ink)" text-anchor="middle">
+            <text x="284" y="223">Да</text>
+            <text x="284" y="365">Да</text>
+            <text x="286" y="308">Нет</text>
+            <text x="286" y="450">Нет</text>
+          </g>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="13.5" fill="var(--ink)" text-anchor="middle">
+            <text x="260" y="45">Начало</text>
+            <text x="260" y="127">Ввод a, b</text>
+            <text x="260" y="234">a &gt; b ?</text>
+            <text x="486" y="234">Вывод:</text>
+            <text x="486" y="250">«a больше b»</text>
+            <text x="260" y="376">a &lt; b ?</text>
+            <text x="486" y="376">Вывод:</text>
+            <text x="486" y="392">«a меньше b»</text>
+            <text x="260" y="486">Вывод: «a равно b»</text>
+            <text x="260" y="655">Конец</text>
+          </g>
+        </svg>
+        <figcaption>Блок-схема отражает базовую логику сравнения; программа ниже дополнительно вычисляет разность и отношение чисел.</figcaption>
+      </figure>
+
+      <div class="code-panel">
+        <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">compare_numbers.py</span></div>
+        <pre><code><span class="c-kw">def</span> compare_numbers(a: <span class="c-kw">float</span>, b: <span class="c-kw">float</span>) -&gt; <span class="c-kw">None</span>:
+    <span class="c-str">"""Сравнивает два рациональных числа и печатает результат."""</span>
+    <span class="c-kw">if</span> a &gt; b:                        <span class="c-com"># ромб: a больше b?</span>
+        result = <span class="c-str">"a больше b"</span>
+    <span class="c-kw">elif</span> a &lt; b:                      <span class="c-com"># ромб: a меньше b?</span>
+        result = <span class="c-str">"a меньше b"</span>
+    <span class="c-kw">else</span>:                              <span class="c-com"># остаётся случай a == b</span>
+        result = <span class="c-str">"a равно b"</span>
+
+    difference = a - b                <span class="c-com"># разность чисел</span>
+    ratio = a / b                     <span class="c-com"># во сколько раз a больше/меньше b</span>
+
+    <span class="c-kw">print</span>(<span class="c-str">f"Результат сравнения: {result}"</span>)
+    <span class="c-kw">print</span>(<span class="c-str">f"Разность a - b = {difference}"</span>)
+    <span class="c-kw">print</span>(<span class="c-str">f"Отношение a / b = {ratio}"</span>)
+
+
+<span class="c-kw">if</span> __name__ == <span class="c-str">"__main__"</span>:
+    a = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"Введите число a: "</span>))
+    b = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"Введите число b: "</span>))
+    compare_numbers(a, b)</code></pre>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">Внимание</span>
+        Эта версия падает с ошибкой <code>ZeroDivisionError</code>, если b = 0, и с <code>ValueError</code>, если ввести не число. Это не случайный недосмотр: обе проблемы мы осознанно устраним в Модуле 4 — на примере одной и той же программы виден весь путь от рабочего, но хрупкого кода к устойчивому.
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-label">Задания для самостоятельной работы</div>
+      {% include "handbook/_exercises.html" %}
+    </div>
+  </section>
+{% endblock %}
