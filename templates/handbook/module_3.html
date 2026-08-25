@@ -113,27 +113,27 @@
 
       <div class="code-panel">
         <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">compare_numbers.py</span></div>
-        <pre><code><span class="c-kw">def</span> compare_numbers(a: <span class="c-kw">float</span>, b: <span class="c-kw">float</span>) -&gt; <span class="c-kw">None</span>:
-    <span class="c-str">"""Сравнивает два рациональных числа и печатает результат."""</span>
+        <pre><code><span class="c-kw">def</span> compare_numbers(a: <span class="c-kw">float</span>, b: <span class="c-kw">float</span>) -&gt; <span class="c-kw">None</span>:  <span class="c-com"># объявляем функцию с двумя параметрами</span>
+    <span class="c-str">"""Сравнивает два рациональных числа и печатает результат."""</span>  <span class="c-com"># докстринг — что делает функция</span>
     <span class="c-kw">if</span> a &gt; b:                        <span class="c-com"># ромб: a больше b?</span>
-        result = <span class="c-str">"a больше b"</span>
+        result = <span class="c-str">"a больше b"</span>       <span class="c-com"># ветка «да» — запоминаем текст результата</span>
     <span class="c-kw">elif</span> a &lt; b:                      <span class="c-com"># ромб: a меньше b?</span>
-        result = <span class="c-str">"a меньше b"</span>
-    <span class="c-kw">else</span>:                              <span class="c-com"># остаётся случай a == b</span>
-        result = <span class="c-str">"a равно b"</span>
+        result = <span class="c-str">"a меньше b"</span>      <span class="c-com"># ветка «да» — запоминаем текст результата</span>
+    <span class="c-kw">else</span>:                              <span class="c-com"># иначе остаётся случай a == b</span>
+        result = <span class="c-str">"a равно b"</span>       <span class="c-com"># числа равны — запоминаем текст результата</span>
 
-    difference = a - b                <span class="c-com"># разность чисел</span>
-    ratio = a / b                     <span class="c-com"># во сколько раз a больше/меньше b</span>
+    difference = a - b                <span class="c-com"># вычисляем разность чисел</span>
+    ratio = a / b                     <span class="c-com"># вычисляем отношение (во сколько раз a больше/меньше b)</span>
 
-    <span class="c-kw">print</span>(<span class="c-str">f"Результат сравнения: {result}"</span>)
-    <span class="c-kw">print</span>(<span class="c-str">f"Разность a - b = {difference}"</span>)
-    <span class="c-kw">print</span>(<span class="c-str">f"Отношение a / b = {ratio}"</span>)
+    <span class="c-kw">print</span>(<span class="c-str">f"Результат сравнения: {result}"</span>)  <span class="c-com"># печатаем текстовый результат</span>
+    <span class="c-kw">print</span>(<span class="c-str">f"Разность a - b = {difference}"</span>)  <span class="c-com"># печатаем разность</span>
+    <span class="c-kw">print</span>(<span class="c-str">f"Отношение a / b = {ratio}"</span>)  <span class="c-com"># печатаем отношение</span>
 
 
-<span class="c-kw">if</span> __name__ == <span class="c-str">"__main__"</span>:
-    a = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"Введите число a: "</span>))
-    b = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"Введите число b: "</span>))
-    compare_numbers(a, b)</code></pre>
+<span class="c-kw">if</span> __name__ == <span class="c-str">"__main__"</span>:            <span class="c-com"># выполняется только при прямом запуске файла</span>
+    a = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"Введите число a: "</span>))  <span class="c-com"># считываем и переводим число a</span>
+    b = <span class="c-kw">float</span>(<span class="c-kw">input</span>(<span class="c-str">"Введите число b: "</span>))  <span class="c-com"># считываем и переводим число b</span>
+    compare_numbers(a, b)          <span class="c-com"># вызываем функцию с введёнными числами</span></code></pre>
       </div>
 
       <div class="callout">
